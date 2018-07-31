@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'products',
-    'producthunt'
+    'producthunt',
+    'profiles',
 ]
 
 MIDDLEWARE = [

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2 class="mb-4">Profile</h2>
+  <img src="{{ profile.image }}" alt="{{ user.username }} Profile Image" width="100">
+  <h4>{{ user.username }}</h4>
+  <p>{{  user.email }}</p>
+  <p>{{  profile.dob }}</p>
+  <p>{{  profile.hometown }}</p>
+  <p>{{  profile.bio }}</p>
+  <a class="btn btn-primary" href="{% url 'profile_edit' pk=user.pk %}">Edit</a>
+  <a class="btn btn-danger" href="{% url 'profile_delete' pk=user.pk %}">Delete Account</a>
+{% endblock %}
