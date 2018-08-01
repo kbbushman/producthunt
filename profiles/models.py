@@ -1,12 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
+import datetime
+from django.utils import timezone
 
 class Profile(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
-  dob = models.CharField(max_length=100)
-  hometown = models.CharField(max_length=100)
-  bio = models.CharField(max_length=350)
-  image = models.CharField(max_length=250)
+  first_name = models.CharField(max_length=100, blank=True)
+  last_name = models.CharField(max_length=100, blank=True)
+  image = models.CharField(max_length=250, blank=True)
+  email = models.EmailField(max_length=50, null=True, blank=True)
+  dob = models.CharField(max_length=100, blank=True)
+  hometown = models.CharField(max_length=100, blank=True)
+  bio = models.TextField(null=True, blank=True)
+  signup_date = models.DateTimeField(default=timezone.now)
+  updated = models.BooleanField(default=False)
 
   def __str__(self):
     return self.user.username

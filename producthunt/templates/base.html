@@ -1,5 +1,4 @@
 {% load staticfiles %}
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,6 +11,8 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <!-- Product Hunt CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
   </head>
 
@@ -50,7 +51,7 @@
     </main>
 
     <!-- Footer Section -->
-    <footer class="text-muted">
+    <footer class="footer text-muted bg-dark">
       <div class="container text-center">
         <p>© Product Hunt {% now "Y" %}</p>
       </div>
