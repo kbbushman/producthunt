@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Edit Profile</h1>
+    <form method="POST" class="artist-form">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+        
+        <button type="submit" class="save btn btn-primary float-right">Save</button>
+    </form>
+{% endblock %}

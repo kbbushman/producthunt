@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
+from profiles.models import Profile
 from django.contrib import auth
 
 ############################ SIGN UP ############################
@@ -16,6 +17,7 @@ def signup(request):
       # If user does not exist, create and login new user then redirect to home
       except User.DoesNotExist:
         user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
+        profile = Profile.objects.create(user=user)
         auth.login(request, user)
         return redirect('home')
     else:
