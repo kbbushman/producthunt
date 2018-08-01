@@ -1,13 +1,52 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h2 class="mb-4">Profile</h2>
-  <img src="{{ profile.image }}" alt="{{ user.username }} Profile Image" width="100">
-  <h4>{{ user.username }}</h4>
-  <p>{{  user.email }}</p>
-  <p>{{  profile.dob }}</p>
-  <p>{{  profile.hometown }}</p>
-  <p>{{  profile.bio }}</p>
-  <a class="btn btn-primary" href="{% url 'profile_edit' pk=user.pk %}">Edit</a>
-  <a class="btn btn-danger" href="{% url 'profile_delete' pk=user.pk %}">Delete Account</a>
+  <div class="container">
+    <div class="row">
+      <div class="col-6 offset-3">
+          <h2 class="mb-4">Profile</h2>
+
+          {% if profile.updated %}
+        
+            {% if not profile.image %}
+            {% else %}
+              <img src="{{ profile.image }}" alt="Profile Image" width="100">
+            {% endif %}
+            {% if not profile.first_name %}
+            {% else %}
+              <h4>{{ profile.first_name }} {{ profile.last_name }}</h4>
+            {% endif %}
+            <p><strong>Username:</strong> {{ user.username }}</p>
+            {% if profile.email %}
+              <p><strong>Email:</strong> {{  profile.email }}</p>
+            {% else %}
+            {% endif %}
+            {% if not profile.dob %}
+            {% else %}
+              <p><strong>Date of birth:</strong> {{  profile.dob }}</p>
+            {% endif %}
+            {% if not profile.hometown %}
+            {% else %}
+              <p><strong>Hometown:</strong> {{  profile.hometown }}</p>
+            {% endif %}
+            {% if not profile.bio %}
+            {% else %}
+              <p><strong>bio:</strong> {{  profile.bio }}</p>
+            {% endif %}
+            <p><strong>Signup Date:</strong> {{  profile.signup_date }}</p>
+        
+          {% else %}
+        
+            <img src="https://robohash.org/profile_img.png" alt="Placeholder Profile Image">
+            <h4 class="mb-4">Please update your profile!</h4>
+        
+          {% endif %}
+        
+          <a class="btn btn-danger" href="{% url 'profile_delete' pk=user.pk %}">Delete Account</a>
+          <a class="btn btn-primary" href="{% url 'profile_edit' pk=user.pk %}">Edit</a>
+      </div>
+    </div>
+  </div>
+  
+
 {% endblock %}
