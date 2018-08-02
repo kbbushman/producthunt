@@ -3,47 +3,49 @@
 {% block content %}
   <div class="container">
     <div class="row">
-      <div class="col-6 offset-3">
-          <h2 class="mb-4">Profile</h2>
-
-          {% if profile.updated %}
-        
-            {% if not profile.image %}
-            {% else %}
-              <img src="{{ profile.image }}" alt="Profile Image" width="100">
-            {% endif %}
-            {% if not profile.first_name %}
-            {% else %}
-              <h4>{{ profile.first_name }} {{ profile.last_name }}</h4>
-            {% endif %}
-            <p><strong>Username:</strong> {{ user.username }}</p>
-            {% if profile.email %}
-              <p><strong>Email:</strong> {{  profile.email }}</p>
-            {% else %}
-            {% endif %}
-            {% if not profile.dob %}
-            {% else %}
-              <p><strong>Date of birth:</strong> {{  profile.dob }}</p>
-            {% endif %}
-            {% if not profile.hometown %}
-            {% else %}
-              <p><strong>Hometown:</strong> {{  profile.hometown }}</p>
-            {% endif %}
-            {% if not profile.bio %}
-            {% else %}
-              <p><strong>bio:</strong> {{  profile.bio }}</p>
-            {% endif %}
-            <p><strong>Signup Date:</strong> {{  profile.signup_date }}</p>
-        
+      <div class="col-4 offset-2 text-center mr-4">
+        <h2 class="mb-4 text-left">Profile</h2>
+        {% if not profile.image %}
+          <img src="https://robohash.org/profile_img.png" alt="Placeholder Profile Image" />
+          <p>Update your profile to change this image</p>
+        {% else %}
+          <img src="{{ profile.image.url }}" class="mb-3" alt="Profile Image" width="300" />
+        {% endif %}
+        <div class="row mt-2">
+          <a class="btn btn-primary btn-block" href="{% url 'profile_edit' pk=user.pk %}">Update Profile</a>
+          <a class="btn btn-danger btn-block" href="{% url 'profile_delete' pk=user.pk %}">Delete Account</a>
+        </div>          
+      </div>
+      <div class="col-4 pt-5">
+        {% if profile.updated %}
+      
+          {% if not profile.first_name %}
           {% else %}
-        
-            <img src="https://robohash.org/profile_img.png" alt="Placeholder Profile Image">
-            <h4 class="mb-4">Please update your profile!</h4>
-        
+            <h4>{{ profile.first_name }} {{ profile.last_name }}</h4>
           {% endif %}
+          <p><strong>Username:</strong> {{ user.username }}</p>
+          {% if profile.email %}
+            <p><strong>Email:</strong> {{  profile.email }}</p>
+          {% else %}
+          {% endif %}
+          {% if not profile.dob %}
+          {% else %}
+            <p><strong>Date of birth:</strong> {{  profile.dob }}</p>
+          {% endif %}
+          {% if not profile.hometown %}
+          {% else %}
+            <p><strong>Hometown:</strong> {{  profile.hometown }}</p>
+          {% endif %}
+          {% if not profile.bio %}
+          {% else %}
+            <p><strong>bio:</strong> {{  profile.bio }}</p>
+          {% endif %}
+          <p><strong>Signup Date:</strong> {{  profile.signup_date }}</p>
+      
+        {% else %}
+            <a href="{% url 'profile_edit' pk=user.pk %}">Please update your profile >></a>
+        {% endif %}
         
-          <a class="btn btn-danger" href="{% url 'profile_delete' pk=user.pk %}">Delete Account</a>
-          <a class="btn btn-primary" href="{% url 'profile_edit' pk=user.pk %}">Edit</a>
       </div>
     </div>
   </div>
