@@ -27,6 +27,7 @@ main {
 }
 
 .footer {
+  background-color: #eee !important;
   height: 75px;
 	padding: 30px 0;
 	margin-top: 80px;

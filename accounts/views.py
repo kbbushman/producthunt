@@ -9,7 +9,7 @@ def signup(request):
   # POST Request for a new user
   if request.method == 'POST':
     # Verify passwords
-    if request.POST['password1'] == request.POST['password2']:
+    if request.POST['password1'] == request.POST['password2'] and request.POST['password1'] != '':
       try:
         # If Username already exists, render form with error
         user = User.objects.get(username=request.POST['username'])

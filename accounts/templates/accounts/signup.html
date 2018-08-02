@@ -15,15 +15,15 @@
       {% csrf_token %}
       <div class="form-group">
         <label for="username">Username:</label>
-        <input class="form-control" type="text" name="username" placeholder="Username">
+        <input class="form-control" type="text" name="username" placeholder="Username" required>
       </div>
       <div class="form-group">
         <label for="password1">Password:</label>
-        <input class="form-control" type="password" name="password1">
+        <input class="form-control" type="password" name="password1" required>
       </div>
       <div class="form-group mb-4">
         <label for="password2">Confirm Password:</label>
-        <input class="form-control" type="password" name="password2">
+        <input class="form-control" type="password" name="password2" required>
       </div>
       <input class="btn btn-primary float-right" type="submit" value="Sign Up!">
     </form>
