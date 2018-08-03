@@ -9,7 +9,7 @@
           <img src="https://robohash.org/profile_img.png" alt="Placeholder Profile Image" />
           <p>Update your profile to change this image</p>
         {% else %}
-          <img src="{{ profile.image.url }}" class="mb-3" alt="Profile Image" width="300" />
+          <img src="{{ profile.image.url }}" class="mb-3" alt="Profile Image" width="350" />
         {% endif %}
         <div class="row mt-2">
           <a class="btn btn-primary btn-block" href="{% url 'profile_edit' pk=user.pk %}">Update Profile</a>
