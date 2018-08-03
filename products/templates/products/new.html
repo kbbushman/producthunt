@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if error %}
+  <div class="alert alert-danger">
+    <p class="mb-0">{{ error }}</p>
+  </div>
+{% endif %}
+
+<div class="row">
+  <div class="col-10 col-md-6 offset-md-3 offset-1">
+    <h2 class="text-center mb-3">Add New Product</h2>
+    <form method="POST" action="{% url 'product_new' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input class="form-control" type="text" name="title" placeholder="Title" required />
+      </div>
+      <div class="form-group">
+        <label for="body">Body:</label>
+        <input class="form-control" type="textbox" name="body" placeholder="Body" required />
+      </div>
+      <div class="form-group">
+        <label for="url">URL:</label>
+        <input class="form-control" type="text" name="url" placeholder="URL" required />
+      </div>
+      <div class="form-group">
+        <label for="icon">Icon:</label>
+        <input class="form-control" type="file" name="icon" placeholder="Icon" required />
+      </div>
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <input class="form-control" type="file" name="image" placeholder="Image" required />
+      </div>
+      <input class="btn btn-primary float-right" type="submit" value="Add Product" />
+    </form>
+  </div>
+</div>
+{% endblock %}

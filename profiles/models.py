@@ -5,7 +5,7 @@ from django.utils import timezone
 
 def upload_path(instance, filename):
     now = datetime.datetime.now()
-    return 'images/%s/%s/%s/%s' % (now.year, now.month, instance.user.username, filename)
+    return 'images/%s/%s/%s/%s' % (instance.user.username, now.year, now.month, filename)
 
 class Profile(models.Model):
   user = models.ForeignKey(User, on_delete=models.CASCADE)
